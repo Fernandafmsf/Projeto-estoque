@@ -9,4 +9,3 @@ catch(PDOexception $e)
   echo 'Erro ao conectar com o MySQL: ' .$e->getMessage();
 }
 
-?>

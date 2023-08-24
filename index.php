@@ -1,11 +1,9 @@
 <?php
 session_start();
-
 include "connection.php";
 
-
-  $query = $pdo-> prepare("SELECT * FROM produtos");
-  $query -> execute();
+$query = $pdo-> prepare("SELECT * FROM produtos");
+$query -> execute();
 
 ?>
 
@@ -22,30 +20,15 @@ include "connection.php";
   <p>Faça o cadastro de produtos!</p>
 
   <form action="cadastrar.php" method="POST">
-
     <label for="name">Nome:</label>
     <input type="text" name="nome" required>
       <br><br>
     <label for="categoria">Categoria do produto:</label>
     <input type="text" name="categoria"required >
-
-<!-- tentar com lista depois 
-      <datalist id="categoria">
-        <option value="Informatica">
-          Informatica
-        </option>
-        <option value="Mercearia">
-          Mercearia
-        </option>
-      </datalist>
--->
       <br><br>
-      <label for="quantidade">Quantidade</label>
-      <input type="number" name="quantidade" required>
-
-      <button type="submit">Cadastrar</button>
-
-
+    <label for="quantidade">Quantidade</label>
+    <input type="number" name="quantidade" required>
+    <button type="submit">Cadastrar</button>
   </form>
 
   <br><br>
@@ -58,13 +41,11 @@ include "connection.php";
         <td>Quantidade</td>
         <td>Atualizar</td>
         <td>Deletar</td>
-
       </tr>
     </thead>
 
     <tbody>
       <?php
-      
         foreach($query->fetchAll(PDO::FETCH_ASSOC) as $row){ // começa aqui
       ?>
       <tr>
@@ -98,8 +79,6 @@ include "connection.php";
     </tbody>
   </table>
 
-
-  
 </body>
 </html>
 
