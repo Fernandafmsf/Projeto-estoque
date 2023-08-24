@@ -1,5 +1,5 @@
 <?php
-  session_start();
+ 
   include "connection.php";
   
   if(isset($_POST['delete'])){
@@ -8,12 +8,16 @@
     try {
       $q = "DELETE FROM produtos WHERE id=:prod_id";
       $query=$pdo->prepare($q);
-      $data=[
-              ':prod_id'=> $product_id
-            ];
-      $query_execute=$query->execute($data);
+      $query-> bindParam(':prod_id', $product_id, PDO::PARAM_STR );
+      $query->execute();
 
-      if($query_execute){
+      /*Outra forma de proteger o dado seria: 
+        $data=[
+              ':prod_id'=> $product_id
+            ];*/
+
+
+      if($query){
         //inserir mensagem depois
         header('Location:/Projeto-estoque/index.php');
 
@@ -31,6 +35,8 @@
 
     
   }
+
+  
 
 
 
