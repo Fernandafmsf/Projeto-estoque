@@ -12,4 +12,3 @@
 
 header('Location:/Projeto-estoque/index.php');
 
-?>

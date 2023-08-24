@@ -4,11 +4,12 @@ session_start();
 include "connection.php";
  
 
-//na ausencia do $_Post['delete'], retornar à index
+//na ausencia do $_Post['delete'], retornar à index -> early return
 if(!isset($_POST['delete'])){
   header('Location:/Projeto-estoque/index.php');
 
 }
+
 $product_id=$_POST['delete'];
 
 try {
@@ -27,7 +28,7 @@ try {
 
 }
 
-
+//se não houver mais resultado da query, retorna à index
 if(!$query){
     //inserir mensagem depois
   header('Location:/Projeto-estoque/index.php');

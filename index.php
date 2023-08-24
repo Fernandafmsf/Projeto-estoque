@@ -93,7 +93,6 @@ include "connection.php";
 
       <?php
         }
-
         // termina aqui
       ?>
     </tbody>
