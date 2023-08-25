@@ -1,9 +1,7 @@
 <?php
 session_start();
- 
 include "connection.php";
  
-
 //na ausencia do $_Post['delete'], retornar à index -> early return
 if(!isset($_POST['delete'])){
   header('Location:/Projeto-estoque/index.php');

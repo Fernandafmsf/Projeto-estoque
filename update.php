@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ('connection.php');
 
 
@@ -34,10 +35,10 @@ if(!isset($_GET['id'])){
 
 
 ?>
-<form action="" method="POST">
+<form action="code-update.php" method="POST">
 
   <input type="hidden" name="id" value="<?=$result['id']?>">
-  
+
   <label for="nome">Nome:</label>
   <input type="text" name="nome" value="<?=$result['nome']; ?>">
   <br><br>
@@ -48,7 +49,7 @@ if(!isset($_GET['id'])){
 
   <label for="quantidade">Quantidade</label>
   <input type="number" name="quantidade" value="<?=$result['quantidade'] ?>" required>
-  <button type="submit">Atualizar</button>
+  <button type="submit" name="update-product">Atualizar</button>
 </form>
   
 </body>

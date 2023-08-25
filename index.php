@@ -59,9 +59,12 @@ $query -> execute();
           <?= $row['quantidade'] ?>
         </td>
         <td>
-          <a href="update.php?id=<?=$row['id']?>">
-            Update
-          </a>
+          <button>
+            <a href="update.php?id=<?=$row['id']?>" style="text-decoration:none">
+              Update
+            </a>
+          </button>
+          
         </td>
 
         <td>
