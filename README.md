@@ -8,5 +8,6 @@
   <li>PHP</li>
   <li>HTML</li>
   <li>DBeaver como SGBD</li>
+  <li>Bootstrap</li>
 
 </ul>
