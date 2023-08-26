@@ -10,13 +10,13 @@ include ('connection.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <title>Update dados</title>
 </head>
-<body>
-<a href="index.php">Voltar</a>
-<h3>Edite os dados </h3>
+<body class="container-sm">
 
-<br>
+  <h3>Edite os dados </h3>
 
 <?php
 
@@ -37,19 +37,27 @@ if(!isset($_GET['id'])){
 ?>
 <form action="code-update.php" method="POST">
 
-  <input type="hidden" name="id" value="<?=$result['id']?>">
+  <div class="mb-3">
+    <input type="hidden" name="id" value="<?=$result['id']?>">
 
-  <label for="nome">Nome:</label>
-  <input type="text" name="nome" value="<?=$result['nome']; ?>">
-  <br><br>
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" value="<?=$result['nome']; ?>" class="form-control">
+  </div>
 
-  <label for="categoria">Categoria do produto:</label>
-  <input type="text" name="categoria" value= "<?=$result['categoria'] ?>"required >
-  <br><br>
+  <div class="mb-3">
+    <label for="categoria">Categoria do produto:</label>
+    <input type="text" name="categoria" value= "<?=$result['categoria'] ?>" class="form-control" required >
+  </div>
 
-  <label for="quantidade">Quantidade</label>
-  <input type="number" name="quantidade" value="<?=$result['quantidade'] ?>" required>
-  <button type="submit" name="update-product">Atualizar</button>
+  <div class="mb-3">
+    <label for="quantidade">Quantidade</label>
+    <input type="number" name="quantidade" value="<?=$result['quantidade'] ?>" class="form-control" required>
+  </div>
+
+  <button type="submit" name="update-product" class="btn btn-success">Atualizar</button>
+  <button class="btn btn-primary">
+    <a href="index.php" class="nav-link">Voltar</a>
+  </button>
 </form>
   
 </body>

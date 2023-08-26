@@ -4,6 +4,7 @@ include "connection.php";
 
 $query = $pdo-> prepare("SELECT * FROM produtos");
 $query -> execute();
+$qtd=$query->rowCount();
 
 ?>
 
@@ -13,27 +14,49 @@ $query -> execute();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
   <title>CRUD - produtos</title>
 </head>
-<body>
+<body class="container-sm">
   <h1>Cadastro de produtos</h1>
   <p>Faça o cadastro de produtos!</p>
 
   <form action="cadastrar.php" method="POST">
-    <label for="name">Nome:</label>
-    <input type="text" name="nome" required>
-      <br><br>
-    <label for="categoria">Categoria do produto:</label>
-    <input type="text" name="categoria"required >
-      <br><br>
-    <label for="quantidade">Quantidade</label>
-    <input type="number" name="quantidade" required>
-    <button type="submit">Cadastrar</button>
+
+    <div class="mb-3">
+      <label for="name">Nome</label>
+      <input type="text" name="nome" class="form-control form-control-sm" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="categoria">Categoria do produto</label>
+      <input type="text" name="categoria" class="form-control form-control-sm" required >
+    </div>
+
+    <div class="mb-3">
+      <label for="quantidade">Quantidade</label>
+      <input type="number" name="quantidade" class="form-control form-control-sm" required>
+    </div>
+
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </div>   
   </form>
 
   <br><br>
 
-  <table border="1">
+  <?php
+      if($qtd<=0){
+        print"<h3>Não foi encontrado resultados</h3>
+        <h3>Cadastre produtos</h3>";
+      }
+      else{
+        
+      ?>
+  <table class="table table-striped table-hover table-bordered">
     <thead>
       <tr>
         <td>Produto</td>
@@ -44,10 +67,13 @@ $query -> execute();
       </tr>
     </thead>
 
+    <?php
+      }
+    ?>
     <tbody>
-      <?php
-        foreach($query->fetchAll(PDO::FETCH_ASSOC) as $row){ // começa aqui
-      ?>
+    <?php
+      foreach($query->fetchAll(PDO::FETCH_ASSOC) as $row){ // começa aqui
+    ?>
       <tr>
         <td> 
           <?= $row['nome'] ?> 
@@ -59,8 +85,8 @@ $query -> execute();
           <?= $row['quantidade'] ?>
         </td>
         <td>
-          <button>
-            <a href="update.php?id=<?=$row['id']?>" style="text-decoration:none">
+          <button class="btn btn-success">
+            <a href="update.php?id=<?=$row['id']?>" class="nav-link">
               Update
             </a>
           </button>
@@ -69,7 +95,7 @@ $query -> execute();
 
         <td>
           <form action="deletar.php" method="POST">
-            <button type="submit" name="delete" value="<?=$row['id']; ?>">
+            <button class="btn btn-danger" type="submit" name="delete" value="<?=$row['id']; ?>">
               Deletar
             </button>
           </form>
@@ -79,11 +105,13 @@ $query -> execute();
 
       <?php
         }
+      
         // termina aqui
       ?>
     </tbody>
   </table>
 
+   <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
