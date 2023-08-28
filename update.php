@@ -14,8 +14,30 @@ include ('connection.php');
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <title>Update dados</title>
 </head>
-<body class="container-sm">
+<body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand" href="#">Cadastro de produtos</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">Home </a>
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link" href="listar.php">Listar produtos</a>
+       </li>
+       
+    </ul>
+  </div>
+</nav>
+  <br><br>
+
+  <div class="container-sm">
   <h3>Edite os dados </h3>
 
 <?php
@@ -55,10 +77,10 @@ if(!isset($_GET['id'])){
   </div>
 
   <button type="submit" name="update-product" class="btn btn-success">Atualizar</button>
-  <button class="btn btn-primary">
-    <a href="index.php" class="nav-link">Voltar</a>
+  <button class="btn btn-danger">
+    <a href="index.php" class="nav-link">Cancelar</a>
   </button>
 </form>
-  
+  </div>
 </body>
 </html>

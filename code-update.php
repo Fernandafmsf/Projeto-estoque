@@ -25,7 +25,7 @@ try{
   }
 
 
-  header('Location:/Projeto-estoque/index.php');
+  header('Location:/Projeto-estoque/listar.php');
 }
 catch(PDOexception $e){
   echo 'Erro ao conectar com o MySQL: ' .$e->getMessage();

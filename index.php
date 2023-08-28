@@ -20,7 +20,30 @@ $qtd=$query->rowCount();
 
   <title>CRUD - produtos</title>
 </head>
-<body class="container-sm">
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <a class="navbar-brand" href="#">Cadastro de produtos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+       </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.php">Home </a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link" href="listar.php">Listar produtos</a>
+            </li>
+       
+      </ul>
+    </div>
+    </nav>
+<br>
+    <div class="container-sm">
+
   <h1>Cadastro de produtos</h1>
   <p>Faça o cadastro de produtos!</p>
 
@@ -45,71 +68,7 @@ $qtd=$query->rowCount();
       <button type="submit" class="btn btn-primary">Cadastrar</button>
     </div>   
   </form>
-
-  <br><br>
-
-  <?php
-      if($qtd<=0){
-        print"<h3>Não foi encontrado resultados</h3>
-        <h3>Cadastre produtos</h3>";
-      }
-      else{
-        
-      ?>
-  <table class="table table-striped table-hover table-bordered">
-    <thead>
-      <tr>
-        <td>Produto</td>
-        <td>Categoria</td>
-        <td>Quantidade</td>
-        <td>Atualizar</td>
-        <td>Deletar</td>
-      </tr>
-    </thead>
-
-    <?php
-      }
-    ?>
-    <tbody>
-    <?php
-      foreach($query->fetchAll(PDO::FETCH_ASSOC) as $row){ // começa aqui
-    ?>
-      <tr>
-        <td> 
-          <?= $row['nome'] ?> 
-        </td>
-        <td>
-          <?= $row['categoria'] ?> 
-        </td>
-        <td> 
-          <?= $row['quantidade'] ?>
-        </td>
-        <td>
-          <button class="btn btn-success">
-            <a href="update.php?id=<?=$row['id']?>" class="nav-link">
-              Update
-            </a>
-          </button>
-          
-        </td>
-
-        <td>
-          <form action="deletar.php" method="POST">
-            <button class="btn btn-danger" type="submit" name="delete" value="<?=$row['id']; ?>">
-              Deletar
-            </button>
-          </form>
-        </td>
-
-      </tr>
-
-      <?php
-        }
-      
-        // termina aqui
-      ?>
-    </tbody>
-  </table>
+</div>
 
    <script src="js/bootstrap.bundle.min.js"></script>
 </body>

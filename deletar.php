@@ -3,12 +3,12 @@ session_start();
 include "connection.php";
  
 //na ausencia do $_Post['delete'], retornar à index -> early return
-if(!isset($_POST['delete'])){
+if(!isset($_GET['id'])){
   header('Location:/Projeto-estoque/index.php');
 
 }
 
-$product_id=$_POST['delete'];
+$product_id=$_GET['id'];
 
 try {
   $q = "DELETE FROM produtos WHERE id=:prod_id";
@@ -16,10 +16,6 @@ try {
   $query-> bindParam(':prod_id', $product_id, PDO::PARAM_STR );
   $query->execute();
 
-      /*Outra forma de proteger o dado seria: 
-        $data=[
-              ':prod_id'=> $product_id
-            ];*/
 
 }catch(PDOexception $e){
   echo 'Erro ao conectar com o MySQL: ' .$e->getMessage();
@@ -34,7 +30,7 @@ if(!$query){
 }
 
 //tendo retorno positivo da query, realizar uma ação
-header('Location:/Projeto-estoque/index.php');
+header('Location:/Projeto-estoque/listar.php');
 
     
 
