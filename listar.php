@@ -20,15 +20,16 @@ $qtd=$query->rowCount();
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
 
   <a class="navbar-brand" href="#">Cadastro de produtos</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="navbar-collapse collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="index.php">Home </a>
       </li>
       <li class="nav-item"> 
@@ -37,10 +38,10 @@ $qtd=$query->rowCount();
        
     </ul>
   </div>
+  </div>
 </nav>
   <br><br>
   <div class="container-sm">
-    <h3>Lista de produtos</h3>
 
   <?php
     if($qtd<=0){
@@ -51,14 +52,20 @@ $qtd=$query->rowCount();
     <?php
     }else{
   ?>
+
+  <h3>Lista de produtos</h3>
+  <form action="">
+    <input type="text" name="search" id="search" placeholder="Pesquisar">
+  </form>
+
 <table class="table table-striped table-hover table-bordered">
     <thead>
       <tr>
         <td>Produto</td>
         <td>Categoria</td>
         <td>Quantidade</td>
-        <td>Atualizar</td>
-        <td>Deletar</td>
+        <td>Ações</td>
+       
       </tr>
     </thead>
 
@@ -86,9 +93,6 @@ $qtd=$query->rowCount();
           </a>
         </button>
           
-      </td>
-
-      <td>
       <button class="btn btn-danger">
           <a href="deletar.php?id=<?=$row['id']?>"
           onclick="return confirm('Tem certeza que deseja excluir?')" class="nav-link">
