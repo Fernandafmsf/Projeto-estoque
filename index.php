@@ -21,15 +21,15 @@ $qtd=$query->rowCount();
   <title>CRUD - produtos</title>
 </head>
 <body>
-
+<div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
         <a class="navbar-brand" href="#">Cadastro de produtos</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
        </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class=" navbar-collapse collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
               <a class="nav-link" href="index.php">Home </a>
@@ -39,6 +39,7 @@ $qtd=$query->rowCount();
             </li>
        
       </ul>
+    </div>
     </div>
     </nav>
 <br>
