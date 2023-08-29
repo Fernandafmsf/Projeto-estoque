@@ -21,55 +21,57 @@ $qtd=$query->rowCount();
   <title>CRUD - produtos</title>
 </head>
 <body>
-<div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid m-2">
         <a class="navbar-brand" href="#">Cadastro de produtos</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
        </button>
 
         <div class=" navbar-collapse collapse" id="navbarNav">
+
           <ul class="navbar-nav">
             <li class="nav-item active">
               <a class="nav-link" href="index.php">Home </a>
             </li>
+
             <li class="nav-item"> 
               <a class="nav-link" href="listar.php">Listar produtos</a>
             </li>
-       
-      </ul>
-    </div>
-    </div>
+          </ul>
+
+        </div>
+      </div>
     </nav>
-<br>
+    <br>
+
     <div class="container-sm">
+      <h1>Cadastro de produtos</h1>
+      <p>Faça o cadastro de produtos!</p>
 
-  <h1>Cadastro de produtos</h1>
-  <p>Faça o cadastro de produtos!</p>
+      <form action="cadastrar.php" method="POST">
 
-  <form action="cadastrar.php" method="POST">
+        <div class="mb-3">
+          <label for="name">Nome</label>
+          <input type="text" name="nome" class="form-control form-control-sm" required>
+        </div>
 
-    <div class="mb-3">
-      <label for="name">Nome</label>
-      <input type="text" name="nome" class="form-control form-control-sm" required>
+        <div class="mb-3">
+          <label for="categoria">Categoria do produto</label>
+          <input type="text" name="categoria" class="form-control form-control-sm" required >
+        </div>
+
+        <div class="mb-3">
+          <label for="quantidade">Quantidade</label>
+          <input type="number" name="quantidade" class="form-control form-control-sm" required>
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>   
+      </form>
     </div>
-
-    <div class="mb-3">
-      <label for="categoria">Categoria do produto</label>
-      <input type="text" name="categoria" class="form-control form-control-sm" required >
-    </div>
-
-    <div class="mb-3">
-      <label for="quantidade">Quantidade</label>
-      <input type="number" name="quantidade" class="form-control form-control-sm" required>
-    </div>
-
-    <div class="mb-3">
-      <button type="submit" class="btn btn-primary">Cadastrar</button>
-    </div>   
-  </form>
-</div>
 
    <script src="js/bootstrap.bundle.min.js"></script>
 </body>

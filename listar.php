@@ -23,6 +23,8 @@ $qtd=$query->rowCount();
   <div class="container-fluid">
 
   <a class="navbar-brand" href="#">Cadastro de produtos</a>
+
+
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
   </button>
@@ -30,14 +32,19 @@ $qtd=$query->rowCount();
   <div class="navbar-collapse collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item ">
-        <a class="nav-link" href="index.php">Home </a>
+        <a class="nav-link " href="index.php">Home </a>
       </li>
       <li class="nav-item"> 
-        <a class="nav-link" href="listar.php">Listar produtos</a>
+        <a class="nav-link " href="listar.php">Listar produtos</a>
        </li>
-       
     </ul>
   </div>
+
+    <form class="d-flex " action="procurar.php" method="POST">
+      <input class="form-control m-2 " type="text" name="nome" placeholder="Nome do produto...">
+      <button class="btn btn-dark m-2" type="submit" name="search-product">Pesquisar</button>
+    </form>
+
   </div>
 </nav>
   <br><br>
@@ -54,10 +61,6 @@ $qtd=$query->rowCount();
   ?>
 
   <h3>Lista de produtos</h3>
-  <form action="">
-    <input type="text" name="search" id="search" placeholder="Pesquisar">
-  </form>
-
 <table class="table table-striped table-hover table-bordered">
     <thead>
       <tr>
