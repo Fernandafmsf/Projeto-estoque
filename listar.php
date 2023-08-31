@@ -1,6 +1,7 @@
 <?php
 session_start();
 include ("connection.php");
+$nome="";
 
 if(isset($_POST['search'])){
   $nome=$_POST['nome'];
@@ -54,7 +55,7 @@ if(isset($_POST['search'])){
   </div>
 
     <form class="d-flex "  method="POST">
-      <input class="form-control m-2 " type="text" name="nome" placeholder="Nome do produto...">
+      <input class="form-control m-2 " type="text" name="nome" placeholder="Nome do produto..." value="<?php echo $nome; ?>">
       <button class="btn btn-dark m-2" type="submit" name="search">Pesquisar</button>
     </form>
 
