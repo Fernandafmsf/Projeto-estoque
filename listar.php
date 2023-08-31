@@ -2,11 +2,24 @@
 session_start();
 include ("connection.php");
 
-$q= "SELECT * FROM produtos";
-$query=$pdo->prepare($q);
-$query->execute();
+if(isset($_POST['search'])){
+  $nome=$_POST['nome'];
 
-$qtd=$query->rowCount();
+  $q= "SELECT * FROM produtos WHERE nome LIKE :nome ";
+  $query=$pdo->prepare($q);
+  $query ->bindParam(':nome', $_POST['nome'], PDO::PARAM_STR);
+  $query_execute= $query->execute();
+
+  $qtd=$query->rowCount();
+
+}else{
+
+  $q= "SELECT * FROM produtos";
+  $query=$pdo->prepare($q);
+  $query->execute();
+
+  $qtd=$query->rowCount();
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +53,9 @@ $qtd=$query->rowCount();
     </ul>
   </div>
 
-    <form class="d-flex " action="procurar.php" method="POST">
+    <form class="d-flex "  method="POST">
       <input class="form-control m-2 " type="text" name="nome" placeholder="Nome do produto...">
-      <button class="btn btn-dark m-2" type="submit" name="search-product">Pesquisar</button>
+      <button class="btn btn-dark m-2" type="submit" name="search">Pesquisar</button>
     </form>
 
   </div>
@@ -54,7 +67,7 @@ $qtd=$query->rowCount();
     if($qtd<=0){
     ?>
     <script>
-      alert("Nao foi encontrado resultados. Cadastre seus produtos para visualizá-los");
+      alert("Nao foi encontrado resultados.");
     </script>
     <?php
     }else{
