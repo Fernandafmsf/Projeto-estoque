@@ -2,13 +2,15 @@
 session_start();
 include ("connection.php");
 $nome="";
+$nome_exibition="";
 
 if(isset($_POST['search'])){
-  $nome=$_POST['nome'];
+  $nome="%".$_POST['nome']."%";
+  $nome_exibition=$_POST['nome'];
 
-  $q= "SELECT * FROM produtos WHERE nome LIKE :nome ";
+  $q= "SELECT * FROM produtos WHERE nome LIKE :nome";
   $query=$pdo->prepare($q);
-  $query ->bindParam(':nome', $_POST['nome'], PDO::PARAM_STR);
+  $query ->bindParam(':nome', $nome, PDO::PARAM_STR);
   $query_execute= $query->execute();
 
   $qtd=$query->rowCount();
@@ -55,7 +57,7 @@ if(isset($_POST['search'])){
   </div>
 
     <form class="d-flex "  method="POST">
-      <input class="form-control m-2 " type="text" name="nome" placeholder="Nome do produto..." value="<?php echo $nome; ?>">
+      <input class="form-control m-2 " type="text" name="nome" placeholder="Nome do produto..." value="<?php echo $nome_exibition; ?>">
       <button class="btn btn-dark m-2" type="submit" name="search">Pesquisar</button>
     </form>
 

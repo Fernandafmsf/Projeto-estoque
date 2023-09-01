@@ -54,17 +54,17 @@ $qtd=$query->rowCount();
 
         <div class="mb-3">
           <label for="name">Nome</label>
-          <input type="text" name="nome" class="form-control form-control-sm" required>
+          <input type="text" name="nome" class="form-control form-control" required>
         </div>
 
         <div class="mb-3">
           <label for="categoria">Categoria do produto</label>
-          <input type="text" name="categoria" class="form-control form-control-sm" required >
+          <input type="text" name="categoria" class="form-control form-control" required >
         </div>
 
         <div class="mb-3">
           <label for="quantidade">Quantidade</label>
-          <input type="number" name="quantidade" class="form-control form-control-sm" required>
+          <input type="number" name="quantidade" class="form-control form-control" required>
         </div>
 
         <div class="mb-3">
