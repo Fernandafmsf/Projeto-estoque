@@ -1,9 +1,5 @@
 <?php
 //conectando ao DB e fazendo tratamento de erro com try catch
-$host = "localhost:3309";
-$db = "loja";
-$username = "admin";
-$password = "admin";
 
 try
 {
