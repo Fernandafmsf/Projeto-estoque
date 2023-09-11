@@ -24,12 +24,15 @@ try{
     return;
   }
 
-
+  $_SESSION['message-update']= "Atualizado com sucesso!";
   header('Location:/Projeto-estoque/listar.php');
+  exit(0);
 }
 catch(PDOexception $e){
   echo 'Erro ao conectar com o MySQL: ' .$e->getMessage();
-
+  $_SESSION['message-update'] = "Atualização falhou";
+  header('Location:/Projeto-estoque/listar.php');
+  exit(0);
 }
 
 

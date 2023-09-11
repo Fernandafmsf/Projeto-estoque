@@ -23,10 +23,11 @@ $qtd = $query->rowCount();
 </head>
 
 <body>
+  <script src="js/bootstrap.bundle.min.js"></script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid m-2">
-      <a class="navbar-brand" href="#">Cadastro de produtos</a>
+      <a class="navbar-brand" href="index.php">Cadastro de produtos</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -83,7 +84,17 @@ $qtd = $query->rowCount();
     </form>
   </div>
 
-  <script src="js/bootstrap.bundle.min.js"></script>
+  <?php if (isset($_SESSION['message'])) : ?>
+
+    <h5 class="alert alert-success container-sm"> <?= $_SESSION['message'] ?></h5>
+
+  <?php
+    unset($_SESSION['message']);
+    endif;
+  ?>
+
+
+
 </body>
 
 </html>
