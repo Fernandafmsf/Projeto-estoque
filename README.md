@@ -1,4 +1,4 @@
-# Projeto de estoque de uma loja 
+# Controle de estoque - loja 
 
 Projeto feito durante os 100 dias de código com o intuito de treinar CRUD. Será feito um projeto pensando em um estoque de uma loja, com função de cadastrar produtos, deletar, atualizar e visualizar.
 
