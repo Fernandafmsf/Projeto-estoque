@@ -19,7 +19,7 @@ try{
   $query->execute();
 
   if(!$query){
-    //inserir mensagem depois
+    $_SESSION['message-update'] = "Atualização falhou";
     header('Location:/Projeto-estoque/index.php');
     return;
   }
@@ -30,7 +30,6 @@ try{
 }
 catch(PDOexception $e){
   echo 'Erro ao conectar com o MySQL: ' .$e->getMessage();
-  $_SESSION['message-update'] = "Atualização falhou";
   header('Location:/Projeto-estoque/listar.php');
   exit(0);
 }

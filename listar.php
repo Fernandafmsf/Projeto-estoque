@@ -82,6 +82,7 @@ if (isset($_POST['search'])) {
         <thead>
           <tr>
             <td>Produto</td>
+            <td>Fornecedor</td>
             <td>Categoria</td>
             <td>Quantidade</td>
             <td>Ações</td>
@@ -99,6 +100,9 @@ if (isset($_POST['search'])) {
           <tr>
             <td>
               <?= $row['nome'] ?>
+            </td>
+            <td>
+              <?= $row['fornecedor'] ?>
             </td>
             <td>
               <?= $row['categoria'] ?>

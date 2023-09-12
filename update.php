@@ -70,9 +70,15 @@ include('connection.php');
       </div>
 
       <div class="mb-3">
+        <label for="nome">Fornecedor:</label>
+        <input type="text" name="fornecedor" value="<?= $result['fornecedor']; ?>" class="form-control">
+      </div>
+
+      <div class="mb-3">
         <label for="categoria">Categoria do produto:</label>
         <input type="text" name="categoria" value="<?= $result['categoria'] ?>" class="form-control" required>
       </div>
+
 
       <div class="mb-3">
         <label for="quantidade">Quantidade</label>
@@ -86,7 +92,7 @@ include('connection.php');
     </form>
     <br>
 
-    
+
 
   </div>
 </body>

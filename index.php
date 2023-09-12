@@ -61,6 +61,11 @@ $qtd = $query->rowCount();
       </div>
 
       <div class="mb-3">
+        <label for="name">Fornecedor</label>
+        <input type="text" name="fornecedor" class="form-control form-control" required>
+      </div>
+
+      <div class="mb-3">
         <label for="categoria">Categoria do produto</label>
         <select class="form-select" name="categoria" id="categoria">
           <option selected>Selecione...</option>
@@ -90,7 +95,7 @@ $qtd = $query->rowCount();
 
   <?php
     unset($_SESSION['message']);
-    endif;
+  endif;
   ?>
 
 
