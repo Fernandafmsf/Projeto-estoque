@@ -42,6 +42,9 @@ $qtd = $query->rowCount();
           <li class="nav-item">
             <a class="nav-link" href="listar.php">Listar produtos</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fornecedores.php">Listar fornecedores</a>
+          </li>
         </ul>
 
       </div>
@@ -51,7 +54,6 @@ $qtd = $query->rowCount();
 
   <div class="container-sm">
     <h1>Cadastro de produtos</h1>
-    <p>Faça o cadastro de produtos!</p>
 
     <form action="cadastrar.php" method="POST">
 
@@ -61,8 +63,13 @@ $qtd = $query->rowCount();
       </div>
 
       <div class="mb-3">
-        <label for="name">Fornecedor</label>
-        <input type="text" name="fornecedor" class="form-control form-control" required>
+        <label for="name">Valor de venda</label>
+        <input type="number" name="valor" class="form-control form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="quantidade">Quantidade</label>
+        <input type="number" name="quantidade" class="form-control form-control" required>
       </div>
 
       <div class="mb-3">
@@ -79,8 +86,8 @@ $qtd = $query->rowCount();
       </div>
 
       <div class="mb-3">
-        <label for="quantidade">Quantidade</label>
-        <input type="number" name="quantidade" class="form-control form-control" required>
+        <label for="name">Codigo do Fornecedor</label>
+        <input type="text" name="codigo_fornecedor" class="form-control form-control" required>
       </div>
 
       <div class="mb-3">

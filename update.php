@@ -35,6 +35,9 @@ include('connection.php');
         <li class="nav-item">
           <a class="nav-link" href="listar.php">Listar produtos</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="fornecedores.php">Listar fornecedores</a>
+        </li>
 
       </ul>
     </div>

@@ -1,28 +1,14 @@
 <?php
 session_start();
-include("connection.php");
-$nome = "";
-$nome_exibition = "";
+include('connection.php');
 
-if (isset($_POST['search'])) {
-  $nome = "%" . $_POST['nome'] . "%";
-  $nome_exibition = $_POST['nome'];
+$q = "SELECT * FROM fornecedor";
+$query = $pdo->prepare($q);
+$query->execute();
 
-  $q = "SELECT * FROM produtos WHERE nome LIKE :nome";
-  $query = $pdo->prepare($q);
-  $query->bindParam(':nome', $nome, PDO::PARAM_STR);
-  $query_execute = $query->execute();
-
-  $qtd = $query->rowCount();
-} else {
-
-  $q = "SELECT * FROM produtos";
-  $query = $pdo->prepare($q);
-  $query->execute();
+$qtd = $query->rowCount();
 
 
-  $qtd = $query->rowCount();
-}
 ?>
 
 <!DOCTYPE html>
@@ -31,12 +17,12 @@ if (isset($_POST['search'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de produtos</title>
+  <title>Lista de fornecedores</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
+
 </head>
 
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
 
@@ -69,88 +55,73 @@ if (isset($_POST['search'])) {
     </div>
   </nav>
   <br><br>
+
   <div class="container-sm">
 
     <?php
     if ($qtd <= 0) {
     ?>
       <script>
-        alert("Nao foi encontrado resultados.");
+        alert("Nao foi encontrado resultados")
       </script>
+
     <?php
     } else {
     ?>
 
-      <h3>Lista de produtos</h3>
+      <h3>Lista de fornecedores</h3>
       <table class="table table-striped table-hover table-bordered">
         <thead>
           <tr>
-            <td>Produto</td>
-            <td>Valor</td>
-            <td>Quantidade</td>
-            <td>Categoria</td>
-            <td>Codigo Fornecedor</td>
+            <td>Codigo</td>
+            <td>Nome</td>
+            <td>Telefone</td>
             <td>Ações</td>
-
           </tr>
         </thead>
 
       <?php
     }
       ?>
+
       <tbody>
         <?php
-        foreach ($query->fetchAll(PDO::FETCH_ASSOC) as $row) { // começa aqui
+        foreach ($query->fetchAll(PDO::FETCH_ASSOC) as $row) {
         ?>
           <tr>
+            <td>
+              <?= $row['codigo'] ?>
+            </td>
             <td>
               <?= $row['nome'] ?>
             </td>
             <td>
-              R$<?= $row['valor'] ?>
-            </td>
-            <td>
-              <?= $row['quantidade'] ?>
-            </td>
-            <td>
-              <?= $row['categoria'] ?>
-            </td>
-            <td>
-              <?= $row['codigo_fornecedor']?>
+              <?= $row['telefone'] ?>
             </td>
             <td>
               <button class="btn btn-success">
-                <a href="update.php?id=<?= $row['id'] ?>" class="nav-link">
+                <a href="update-fornecedor.php?id=" <?= $row['codigo'] ?> class="nav-link">
                   Editar
                 </a>
               </button>
 
               <button class="btn btn-danger">
-                <a href="deletar.php?id=<?= $row['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')" class="nav-link">
+                <a href="deletar-fornecedor.php?id=" <?= $row['codigo'] ?> onclick="return confirm('Tem certeza que deseja excluir?')" class="nav-link">
                   Deletar
                 </a>
               </button>
 
             </td>
-
           </tr>
 
         <?php
         }
-
-        // termina aqui
         ?>
       </tbody>
-      </table>
-  </div>
-  <?php if (isset($_SESSION['message-update'])) : ?>
-    <h5 class=" alert alert-success container-sm"><?= $_SESSION['message-update'] ?></h5>
 
-  <?php
-    unset($_SESSION['message-update']);
-  endif;
-  ?>
-  <script src="js/bootstrap.bundle.min.js"></script>
+  </div>
+
+
 </body>
 
 </html>

@@ -4,13 +4,15 @@ var_dump($_POST);
 include "connection.php";
 
 try{
-  $q = "INSERT INTO produtos VALUES (null, :nome, :categoria, :fornecedor, :quantidade)";
+  $q = "INSERT INTO produtos VALUES (null, :nome, :valor, :quantidade, :categoria, :codigo_fornecedor )";
   $query=$pdo->prepare($q);
 
   $query ->bindParam(':nome', $_POST['nome'], PDO::PARAM_STR);
+  $query->bindParam(':valor', $_POST['valor'], PDO::PARAM_STR);
+  $query->bindParam(':quantidade', $_POST['quantidade'], PDO::PARAM_STR);
   $query ->bindParam(':categoria', $_POST['categoria'], PDO::PARAM_STR);
-  $query->bindParam(':fornecedor', $_POST['fornecedor'], PDO::PARAM_STR);
-  $query ->bindParam(':quantidade', $_POST['quantidade'], PDO::PARAM_STR);
+  $query->bindParam(':codigo_fornecedor', $_POST['codigo_fornecedor'], PDO::PARAM_STR);
+  
   $query->execute();
 
   if(!$query){
