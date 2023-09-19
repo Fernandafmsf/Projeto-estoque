@@ -1,6 +1,5 @@
 <?php
 session_start();
-include('connection.php');
 
 $q = "SELECT * FROM fornecedor";
 $query = $pdo->prepare($q);
@@ -23,38 +22,6 @@ $qtd = $query->rowCount();
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-
-      <a class="navbar-brand" href="index.php">Cadastro de produtos</a>
-
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="navbar-collapse collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item ">
-            <a class="nav-link " href="index.php">Home </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="listar.php">Listar produtos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="fornecedores.php">Listar fornecedores</a>
-          </li>
-        </ul>
-      </div>
-
-      <form class="d-flex " method="POST">
-        <input class="form-control m-2 " type="text" name="nome" placeholder="Nome do produto..." value="<?php echo $nome_exibition; ?>">
-        <button class="btn btn-dark m-2" type="submit" name="search">Pesquisar</button>
-      </form>
-
-    </div>
-  </nav>
-  <br><br>
 
   <div class="container-sm">
 
@@ -69,7 +36,9 @@ $qtd = $query->rowCount();
     } else {
     ?>
 
-      <h3>Lista de fornecedores</h3>
+     
+
+      </div>
       <table class="table table-striped table-hover table-bordered">
         <thead>
           <tr>

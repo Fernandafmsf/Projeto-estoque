@@ -20,40 +20,17 @@ include('connection.php');
   <script src="js/bootstrap.bundle.min.js"></script>
 
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-    <a class="navbar-brand" href="index.php">Cadastro de produtos</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="listar.php">Listar produtos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="fornecedores.php">Listar fornecedores</a>
-        </li>
-
-      </ul>
-    </div>
-  </nav>
-  <br><br>
 
   <div class="container-sm">
     <h3>Edite os dados </h3>
 
     <?php
 
-    if (!isset($_GET['id'])) {
-      header('Location:/Projeto-estoque/index.php');
+    if (!isset($_POST['update'])) {
+      header('Location:?page=index');
     }
 
-    $product_id = $_GET['id'];
+    $product_id = $_POST['update'];
     $q = "SELECT * FROM produtos WHERE id=:prod_id";
     $query = $pdo->prepare($q);
     $query->bindParam(':prod_id', $product_id, PDO::PARAM_STR);
@@ -63,7 +40,7 @@ include('connection.php');
 
 
     ?>
-    <form action="code-update.php" method="POST">
+    <form action="?page=code-update" method="POST">
 
       <div class="mb-3">
         <input type="hidden" name="id" value="<?= $result['id'] ?>">

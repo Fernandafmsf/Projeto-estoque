@@ -1,14 +1,3 @@
-<?php
-session_start();
-include "connection.php";
-
-$query = $pdo->prepare("SELECT * FROM produtos");
-$query->execute();
-$qtd = $query->rowCount();
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,14 +25,14 @@ $qtd = $query->rowCount();
 
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home </a>
+            <a class="nav-link" href="?page=home">Cadastrar </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="listar.php">Listar produtos</a>
+            <a class="nav-link" href="?page=listar-prod">Listar produtos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="fornecedores.php">Listar fornecedores</a>
+            <a class="nav-link" href="?page=fornecedores">Listar fornecedores</a>
           </li>
         </ul>
 
@@ -52,61 +41,41 @@ $qtd = $query->rowCount();
   </nav>
   <br>
 
-  <div class="container-sm">
-    <h1>Cadastro de produtos</h1>
+  <div class="container">
+    <?php 
+    include ("connection.php");
+    switch($_REQUEST["page"]){
+      case "home": 
+        include("home.php");
+        break;
+      
+      case "listar-prod":
+        include("listar.php");
+        break;
 
-    <form action="cadastrar.php" method="POST">
+      case "fornecedores":
+        include("fornecedores.php");
+        break;
 
-      <div class="mb-3">
-        <label for="name">Nome</label>
-        <input type="text" name="nome" class="form-control form-control" required>
-      </div>
+      case "cadastrar":
+        include("cadastrar.php");
+        break;
 
-      <div class="mb-3">
-        <label for="name">Valor de venda</label>
-        <input type="number" name="valor" class="form-control form-control" required>
-      </div>
+      case "update":
+        include("update.php");
+        break;
 
-      <div class="mb-3">
-        <label for="quantidade">Quantidade</label>
-        <input type="number" name="quantidade" class="form-control form-control" required>
-      </div>
+      case "code-update":
+        include("code-update.php");
+        break;
 
-      <div class="mb-3">
-        <label for="categoria">Categoria do produto</label>
-        <select class="form-select" name="categoria" id="categoria">
-          <option selected>Selecione...</option>
-          <option value="Informatica">Informatica</option>
-          <option value="Mercearia">Mercearia</option>
-          <option value="Brinquedo">Brinquedo</option>
-          <option value="Maquiagem">Maquiagem</option>
+      case "deletar":
+        include("deletar.php");
+        break;
 
-        </select>
 
-      </div>
-
-      <div class="mb-3">
-        <label for="name">Codigo do Fornecedor</label>
-        <input type="text" name="codigo_fornecedor" class="form-control form-control" required>
-      </div>
-
-      <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
-      </div>
-    </form>
+      default: 
+      print"<h1>Bem vindo!</h1>";
+    }
+    ?>
   </div>
-
-  <?php if (isset($_SESSION['message'])) : ?>
-
-    <h5 class="alert alert-success container-sm"> <?= $_SESSION['message'] ?></h5>
-
-  <?php
-    unset($_SESSION['message']);
-  endif;
-  ?>
-
-
-
-</body>
-
-</html>

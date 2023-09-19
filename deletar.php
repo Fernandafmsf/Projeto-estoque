@@ -1,14 +1,13 @@
 <?php
 session_start();
-include "connection.php";
  
 //na ausencia do $_Post['delete'], retornar à index -> early return
-if(!isset($_GET['id'])){
-  header('Location:/Projeto-estoque/index.php');
+if(!isset($_POST['delete'])){
+  header('Location:?page=home');
 
 }
 
-$product_id=$_GET['id'];
+$product_id=$_POST['delete'];//pegando value do item que tem name=delete
 
 try {
   $q = "DELETE FROM produtos WHERE id=:prod_id";
@@ -30,7 +29,7 @@ if(!$query){
 }
 
 //tendo retorno positivo da query, realizar uma ação
-header('Location:/Projeto-estoque/listar.php');
+header('Location:?page=listar-prod');
 
     
 

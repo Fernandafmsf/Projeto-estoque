@@ -37,38 +37,8 @@ if (isset($_POST['search'])) {
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-
-      <a class="navbar-brand" href="index.php">Cadastro de produtos</a>
 
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="navbar-collapse collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item ">
-            <a class="nav-link " href="index.php">Home </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="listar.php">Listar produtos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="fornecedores.php">Listar fornecedores</a>
-          </li>
-        </ul>
-      </div>
-
-      <form class="d-flex " method="POST">
-        <input class="form-control m-2 " type="text" name="nome" placeholder="Nome do produto..." value="<?php echo $nome_exibition; ?>">
-        <button class="btn btn-dark m-2" type="submit" name="search">Pesquisar</button>
-      </form>
-
-    </div>
-  </nav>
-  <br><br>
   <div class="container-sm">
 
     <?php
@@ -81,7 +51,23 @@ if (isset($_POST['search'])) {
     } else {
     ?>
 
-      <h3>Lista de produtos</h3>
+
+      <div class="row">
+        <div class="col-sm 8">
+          <h3>Lista de produtos</h3>
+        </div>
+        <div class="col-sm-4">
+          <form class="d-flex " method="POST">
+            <input class="form-control m-2 " type="search" name="nome" placeholder="Nome do produto..." value="<?php echo $nome_exibition; ?>">
+            <button class="btn btn-dark m-2" type="submit" name="search">Pesquisar</button>
+          </form>
+        </div>
+
+      </div>
+
+
+
+
       <table class="table table-striped table-hover table-bordered">
         <thead>
           <tr>
@@ -116,21 +102,28 @@ if (isset($_POST['search'])) {
               <?= $row['categoria'] ?>
             </td>
             <td>
-              <?= $row['codigo_fornecedor']?>
+              <?= $row['codigo_fornecedor'] ?>
             </td>
             <td>
-              <button class="btn btn-success">
-                <a href="update.php?id=<?= $row['id'] ?>" class="nav-link">
-                  Editar
-                </a>
-              </button>
 
-              <button class="btn btn-danger">
-                <a href="deletar.php?id=<?= $row['id'] ?>" onclick="return confirm('Tem certeza que deseja excluir?')" class="nav-link">
-                  Deletar
-                </a>
-              </button>
+              <div class="row">
+                <div class="col-sm-3 ">
+                  <form action="?page=update" method="POST">
+                    <button class="btn btn-success" type="submit" name="update" value="<?= $row['id'] ?>">
+                      Editar
+                    </button>
+                  </form>
+                </div>
 
+                <div class="col-sm-3">
+                  <form action="?page=deletar" method="POST">
+                    <button onclick="return confirm('Tem certeza que deseja excluir?')" class="btn btn-danger" type="submit" name="delete" value="<?= $row['id'] ?>">
+                      Deletar
+                    </button>
+                  </form>
+                </div>
+
+              </div>
             </td>
 
           </tr>

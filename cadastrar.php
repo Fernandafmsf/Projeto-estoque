@@ -1,7 +1,6 @@
 <?php
 session_start(); // necessario iniciar para usar o 'edit'
 var_dump($_POST);
-include "connection.php";
 
 try{
   $q = "INSERT INTO produtos VALUES (null, :nome, :valor, :quantidade, :categoria, :codigo_fornecedor )";
@@ -16,12 +15,12 @@ try{
   $query->execute();
 
   if(!$query){
-    header('Location:/Projeto-estoque/index.php');
+    header('Location:?page=home');
     $_SESSION['message'] = "Cadastro falhou";
 
   }
   $_SESSION['message'] = "Cadastrado com sucesso";
-  header('Location:/Projeto-estoque/index.php');
+  header('Location:?page=home');
   exit (0); // estudar sobre 
   
 
