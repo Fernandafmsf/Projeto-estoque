@@ -1,0 +1,17 @@
+{
+    "name": "fernanda/projeto-estoque",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Fernanda\\ProjetoEstoque\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fernandafmsf",
+            "email": "fernandafernandesauto@gmail.com"
+        }
+    ],
+    "require": {}
+}
