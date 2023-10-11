@@ -1,39 +1,11 @@
 <?php
-session_start(); // necessario iniciar para usar o 'edit'
-var_dump($_POST);
+include "./src/model/Produto.php";
+include "./src/DAO/ProdutoDAO.php";
 
-try{
-  $q = "INSERT INTO produtos VALUES (null, :nome, :valor, :quantidade, :categoria, :codigo_fornecedor )";
-  $query=$pdo->prepare($q);
+$produto=new Produto();
+$produtoDAO= new ProdutoDAO();
 
-  $query ->bindParam(':nome', $_POST['nome'], PDO::PARAM_STR);
-  $query->bindParam(':valor', $_POST['valor'], PDO::PARAM_STR);
-  $query->bindParam(':quantidade', $_POST['quantidade'], PDO::PARAM_STR);
-  $query ->bindParam(':categoria', $_POST['categoria'], PDO::PARAM_STR);
-  $query->bindParam(':codigo_fornecedor', $_POST['codigo_fornecedor'], PDO::PARAM_STR);
-  
-  $query->execute();
-
-  if(!$query){
-    header('Location:?page=home');
-    $_SESSION['message'] = "Cadastro falhou";
-
-  }
-  $_SESSION['message'] = "Cadastrado com sucesso";
-  header('Location:?page=home');
-  exit (0); // estudar sobre 
-  
-
-}
-catch(PDOexception $e){
-  echo 'Erro ao conectar com o MySQL: ' .$e->getMessage();
-  exit(0);
-
-}
-
-
-
-
-
-
+include __DIR__ . "/src/view/header.php";
+include __DIR__ . "/src/view/form.php";
+include __DIR__ . "/src/view/footer.php";
 

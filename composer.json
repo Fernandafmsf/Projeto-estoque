@@ -4,7 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Fernanda\\ProjetoEstoque\\": "src/"
+            "src\\": "src/"
         }
     },
     "authors": [
