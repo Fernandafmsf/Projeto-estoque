@@ -1,8 +1,11 @@
+<?php
+use src\controller\controller;
+?>
 <main>
   <section class="container-sm">
     <h2>Cadastre seu produto</h2>
 
-    <form method="POST" action="../controller/controller.php">
+    <form method="POST">
 
       <div class="mb-3">
         <label for="name">Produto: </label>

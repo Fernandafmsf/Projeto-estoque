@@ -1,5 +1,5 @@
 <?php
-
+namespace src\connection;
 use PDO;
 use PDOException;
 
@@ -18,10 +18,10 @@ class Database{
   public static $conexao;
 
   public function __construct() {
-    //
+    
   }
 
-  public static function getConnection(){
+  public function getConnection(){
     try {
       self::$conexao = new PDO("mysql:host=" . self::HOST . "; dbname=" . self::DB, self::USER, self::PASSWORD);
       self::$conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

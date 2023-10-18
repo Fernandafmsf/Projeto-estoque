@@ -1,13 +1,13 @@
 <?php
+require __DIR__ . "/vendor/autoload.php";
 
+use src\model\Produto;
 
-include "./src/model/Produto.php";
-include "./src/DAO/ProdutoDAO.php";
+$produtos = Produto::getProdutos(); //estatico
 
-$produto = new Produto();
-$produtoDAO = new ProdutoDAO();
-
-include __DIR__ ."/src/view/header.php";
+include __DIR__ . "/src/view/header.php";
+include __DIR__ ."/src/view/home.php";
+include __DIR__ . "/src/view/listagem.php";
 include __DIR__ . "/src/view/footer.php";
 
-
+?>

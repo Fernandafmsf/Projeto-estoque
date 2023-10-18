@@ -1,9 +1,20 @@
 <?php
-include "./src/model/Produto.php";
-include "./src/DAO/ProdutoDAO.php";
+require_once "./vendor/autoload.php";
+
+
+use src\model\Produto;
 
 $produto=new Produto();
-$produtoDAO= new ProdutoDAO();
+
+if(isset($_POST['cadastrar'])){
+  $produto->nome=$_POST['nome'];
+  $produto->quantidade=$_POST['quantidade'];
+  $produto->categoria =$_POST['categoria'];
+
+  $produto->cadastrar();
+  header("location: index.php?status= success");
+  exit;
+}
 
 include __DIR__ . "/src/view/header.php";
 include __DIR__ . "/src/view/form.php";

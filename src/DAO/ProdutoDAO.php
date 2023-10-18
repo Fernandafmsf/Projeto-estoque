@@ -1,33 +1,65 @@
 <?php
-include "../model/Produto.php";
-include "../connection/Database.php";
+
+namespace src\DAO;
+
+use src\model\Produto;
+use src\connection\Database;
 
 use PDOException;
 
 /**
- * Classe que vai efetivamente realizar as operaçoes do CRUD
- * Vai pegar a instancia de PDO que se encontra na classe Database para preparar e executar a query
+ * ProdutoDAO extende Database para ser possivel usar o getConnection do database
  */
 
-class ProdutoDAO {
-  private $table = 'produtos';
- 
-  public function create(Produto $produto){
-    
+class ProdutoDAO extends Database{
+  public $table;
+  public $conn;
+
+  public function __construct($table) {
+    $this->table = $table;
+    $this->getConnection();
+  }
+
+  public function execute($query, $params=[]){
     try{
-      $query = 'INSERT INTO ' . self::$table . '(nome, quantidade, categoria) VALUES(?, ?, ?)';
+      $statement= $this::$conexao->prepare($query);
+      $statement->execute($params);
+      return $statement;
 
-      $statement = Database::getConnection()->prepare($query);
-      $statement->bindValue(1, $produto->getNome());
-      $statement->bindValue(2, $produto->getQuantidade());
-      $statement->bindValue(3, $produto->getCategoria());
-
-      return $statement->execute();
-      
     }catch(PDOException $e){
-      echo 'Erro ao conectar com o MySQL' . $e->getMessage();
+      echo "Erro ao conectar com o MySQL: ".$e->getMessage();
     }
   }
+
+  public function insert($values){
+    $fiedls = array_keys($values);
+    $binds = array_pad([], count($fiedls), '?');
+
+    $query="INSERT INTO ".$this->table."(" .implode(', ', $fiedls). ") VALUES (" .implode(',', $binds). ")";
+
+    $this->execute($query,array_values($values));
+    return $this::$conexao->lastInsertId();
+
+  }
+
+  public function select($where=null){
+
+    $where= strlen($where) ? 'WHERE'.$where : '';
+
+    $query="SELECT * FROM ".$this->table. ' ' .$where;
+
+    return $this->execute($query);
+
+  }
+
+  public function excluir($where){
+   
+    $query = "DELETE FROM " .$this->table. " WHERE".$where;
+    $this->execute($query);
+    return true;  
+
+  }
+
 
   
 }

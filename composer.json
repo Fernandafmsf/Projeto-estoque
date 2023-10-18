@@ -1,7 +1,5 @@
 {
     "name": "fernanda/projeto-estoque",
-    "type": "project",
-    "license": "MIT",
     "autoload": {
         "psr-4": {
             "src\\": "src/"
