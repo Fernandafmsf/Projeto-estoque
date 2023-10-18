@@ -1,0 +1,15 @@
+{
+    "name": "fernanda/projeto-estoque",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fernandafmsf",
+            "email": "fernandafernandesauto@gmail.com"
+        }
+    ],
+    "require": {}
+}
