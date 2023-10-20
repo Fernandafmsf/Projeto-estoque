@@ -1,3 +1,4 @@
+<script src="js/bootstrap.bundle.min.js"></script>
 <?php
 
 use src\model\Produto;
@@ -5,19 +6,19 @@ use src\model\Produto;
 $resultados = ' ';
 
 foreach ($produtos as $produto) {
-  $resultados.= '
+  $resultados .= '
     <tr>
       <td>' . $produto->nome . '</td>
       <td>' . $produto->quantidade . '</td>
       <td>' . $produto->categoria . '</td>
       <td>
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" >
           <a class="nav-link" href="editar.php?id=' . $produto->id . '">
             Editar
           </a>
         </button>
 
-        <a href="deletar.php?id= ' .$produto->id . '">
+        <a href="deletar.php?id= ' . $produto->id . '" >
           <button type="button" class="btn btn-danger">Excluir</button>
         </a>
 
@@ -25,7 +26,7 @@ foreach ($produtos as $produto) {
     </tr>
   ';
 }
-$resultados=strlen($resultados)? $resultados : '<tr>
+$resultados = strlen($resultados) ? $resultados : '<tr>
   <td colspan="6" class="text-center">Nenhum produto encontrado</td>
 </tr>';
 

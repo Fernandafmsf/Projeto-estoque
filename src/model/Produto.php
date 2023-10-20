@@ -40,6 +40,15 @@ public function deletar(){
 
 }
 
+public function atualizar(){
+  return (new ProdutoDAO('produtos'))->update(' id= ' .$this->id, [
+    'nome' => $this->nome,
+    'quantidade' => $this->quantidade,
+    'categoria' => $this->categoria
+  ]);
+  return true; 
+}
+
 
 
 

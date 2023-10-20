@@ -1,20 +1,21 @@
 <?php
+
 use src\controller\controller;
 ?>
 <main>
   <section class="container-sm">
-    <h2>Cadastre seu produto</h2>
+    <h2><?= $TITLE ?></h2>
 
     <form method="POST">
 
       <div class="mb-3">
         <label for="name">Produto: </label>
-        <input type="text" name="nome" class="form-control">
+        <input type="text" name="nome" class="form-control" value="<?= $produto->nome ?>">
       </div>
 
       <div class="mb-3">
         <label for="name">Quantidade:</label>
-        <input type="number" name="quantidade" class="form-control">
+        <input type="number" name="quantidade" class="form-control" value="<?= $produto->quantidade ?>">
       </div>
 
       <div class="mb-3">
@@ -29,15 +30,10 @@ use src\controller\controller;
       </div>
 
       <div>
-          <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
+        <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
       </div>
 
     </form>
   </section>
 </main>
 
-<?php
-
-if(isset($_POST['cadastrar'])){
-  echo "teste";
-}
