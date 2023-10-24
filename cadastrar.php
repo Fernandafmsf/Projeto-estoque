@@ -3,7 +3,7 @@ require_once "./vendor/autoload.php";
 
 
 use src\model\Produto;
-
+$TITLE = "Cadastre seu produto";
 $produto=new Produto();
 
 if(isset($_POST['cadastrar'])){

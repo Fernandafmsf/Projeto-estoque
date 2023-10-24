@@ -5,9 +5,6 @@ require_once "./vendor/autoload.php";
 
 use src\model\Produto;
 
-
-
-
 //instanciando produto
 $obProduto= Produto::getProduto($_GET['id']);
 
@@ -15,16 +12,18 @@ $obProduto= Produto::getProduto($_GET['id']);
 if (!isset($_GET['id']) || (!$obProduto instanceof Produto)) {
   header("location: index.php");
   exit;
-}
+  
+} else if(isset($_POST['Excluir'])) {
 
-
-if(isset($_POST['Excluir'])){
   $obProduto->deletar();
   header('location: index.php');
   exit;
 }
 
 
+
+  
 include "./src/view/header.php";
+include "./src/view/confirmar-exclusao.php";
 include "./src/view/footer.php";
 

@@ -25,10 +25,6 @@
           <li class="nav-item active">
             <a class="nav-link" href="cadastrar.php">Cadastrar </a>
           </li>
-  
-          <li class="nav-item">
-            <a class="nav-link" href="list.php">Listar produtos</a>
-          </li>
           
         </ul>
   
