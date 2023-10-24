@@ -69,6 +69,14 @@ class ProdutoDAO extends Database{
 
   }
 
+  public function search($nome){
+
+    $query = "SELECT * FROM " .$this->table. " WHERE nome LIKE '%" .$nome. "%' LIMIT 5";  
+  
+    return $this->execute($query);;
+
+  }
+
 
   
 }

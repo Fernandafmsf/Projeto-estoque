@@ -10,18 +10,18 @@ use src\controller\controller;
 
       <div class="mb-3">
         <label for="name">Produto: </label>
-        <input type="text" name="nome" class="form-control" value="<?= $produto->nome ?>">
+        <input type="text" name="nome" class="form-control">
       </div>
 
       <div class="mb-3">
         <label for="name">Quantidade:</label>
-        <input type="number" name="quantidade" class="form-control" value="<?= $produto->quantidade ?>">
+        <input type="number" name="quantidade" class="form-control">
       </div>
 
       <div class="mb-3">
         <label for="categoria">Categoria do produto</label>
         <select class="form-select" name="categoria" id="categoria">
-          <option selected>Selecione...</option>
+          <option>Selecione...</option>
           <option value="Informatica">Informatica</option>
           <option value="Mercearia">Mercearia</option>
           <option value="Brinquedo">Brinquedo</option>

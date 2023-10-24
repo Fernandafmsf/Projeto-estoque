@@ -49,6 +49,10 @@ public function atualizar(){
   return true; 
 }
 
+public static function pesquisar($nome){
+  return (new ProdutoDAO('produtos'))->search($nome)->fetchAll(PDO::FETCH_CLASS, self::class); //fetchAll garante exibiçao 
+}
+
 
 
 
